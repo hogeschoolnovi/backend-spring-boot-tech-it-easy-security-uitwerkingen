@@ -1,6 +1,11 @@
 package nl.novi.techiteasy1121.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import org.hibernate.annotations.LazyCollection;
+import org.hibernate.annotations.LazyCollectionOption;
+
 import javax.persistence.*;
+import java.util.Collection;
 
 @Entity
 public class Television {
@@ -70,6 +75,18 @@ public class Television {
 //        this.sold = sold;
 //    }
 
+    @OneToOne
+    RemoteController remoteController;
+
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "ci_module_id")
+    private CIModule ciModule;
+
+    @OneToMany(mappedBy = "television")
+    @LazyCollection(LazyCollectionOption.FALSE)
+    @JsonIgnore
+    Collection<TelevisionWallBracket> televisionWallBrackets;
+
     //  Alle variable getters
     public Long getId() {
         return id;
@@ -137,6 +154,18 @@ public class Television {
 
     public Integer getSold() {
         return sold;
+    }
+
+    public RemoteController getRemoteController() {
+        return remoteController;
+    }
+
+    public CIModule getCiModule() {
+        return ciModule;
+    }
+
+    public Collection<TelevisionWallBracket> getTelevisionWallBrackets() {
+        return televisionWallBrackets;
     }
 
     //  Alle variable setters
@@ -208,4 +237,15 @@ public class Television {
         this.sold = sold;
     }
 
+    public void setRemoteController(RemoteController remoteController) {
+        this.remoteController = remoteController;
+    }
+
+    public void setCiModule(CIModule ciModule) {
+        this.ciModule = ciModule;
+    }
+
+    public void setTelevisionWallBrackets(Collection<TelevisionWallBracket> televisionWallBrackets) {
+        this.televisionWallBrackets = televisionWallBrackets;
+    }
 }

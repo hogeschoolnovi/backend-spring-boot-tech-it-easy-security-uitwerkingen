@@ -4,6 +4,8 @@ import nl.novi.techiteasy1121.Dtos.TelevisionDto;
 import nl.novi.techiteasy1121.Dtos.TelevisionInputDto;
 import nl.novi.techiteasy1121.exceptions.RecordNotFoundException;
 import nl.novi.techiteasy1121.models.Television;
+import nl.novi.techiteasy1121.repositories.CIModuleRepository;
+import nl.novi.techiteasy1121.repositories.RemoteControllerRepository;
 import nl.novi.techiteasy1121.repositories.TelevisionRepository;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -16,27 +18,48 @@ public class TelevisionService {
 
     private final TelevisionRepository televisionRepository;
 
-    public TelevisionService(TelevisionRepository televisionRepository){
+    private final RemoteControllerRepository remoteControllerRepository;
+
+    private final RemoteControllerService remoteControllerService;
+
+    private final CIModuleRepository ciModuleRepository;
+
+    private final CIModuleService ciModuleService;
+
+    public TelevisionService(TelevisionRepository televisionRepository,
+                             RemoteControllerRepository remoteControllerRepository,
+                             RemoteControllerService remoteControllerService,
+                             CIModuleRepository ciModuleRepository,
+                             CIModuleService ciModuleService
+                             ){
         this.televisionRepository = televisionRepository;
+        this.remoteControllerRepository = remoteControllerRepository;
+        this.remoteControllerService = remoteControllerService;
+        this.ciModuleRepository = ciModuleRepository;
+        this.ciModuleService = ciModuleService;
     }
 
     public List<TelevisionDto> getAllTelevisions() {
         List<Television> tvList = televisionRepository.findAll();
-        List<TelevisionDto> tvDtoList = new ArrayList<>();
-
-        for(Television tv : tvList) {
-            TelevisionDto dto = transferToDto(tv);
-            tvDtoList.add(dto);
-        }
-        return tvDtoList;
+        return transferTvListToDtoList(tvList);
     }
 
     public List<TelevisionDto> getAllTelevisionsByBrand(String brand) {
         List<Television> tvList = televisionRepository.findAllTelevisionsByBrandEqualsIgnoreCase(brand);
+        return transferTvListToDtoList(tvList);
+    }
+
+    public List<TelevisionDto> transferTvListToDtoList(List<Television> televisions){
         List<TelevisionDto> tvDtoList = new ArrayList<>();
 
-        for(Television tv : tvList) {
+        for(Television tv : televisions) {
             TelevisionDto dto = transferToDto(tv);
+            if(tv.getCiModule() != null){
+                dto.setCiModuleDto(ciModuleService.transferToDto(tv.getCiModule()));
+            }
+            if(tv.getRemoteController() != null){
+                dto.setRemoteControllerDto(remoteControllerService.transferToDto(tv.getRemoteController()));
+            }
             tvDtoList.add(dto);
         }
         return tvDtoList;
@@ -46,6 +69,14 @@ public class TelevisionService {
 
         if (televisionRepository.findById(id).isPresent()){
             Television tv = televisionRepository.findById(id).get();
+            TelevisionDto dto =transferToDto(tv);
+            if(tv.getCiModule() != null){
+                dto.setCiModuleDto(ciModuleService.transferToDto(tv.getCiModule()));
+            }
+            if(tv.getRemoteController() != null){
+                dto.setRemoteControllerDto(remoteControllerService.transferToDto(tv.getRemoteController()));
+            }
+
             return transferToDto(tv);
         } else {
             throw new RecordNotFoundException("geen televisie gevonden");
@@ -132,5 +163,35 @@ public class TelevisionService {
         dto.setSold(television.getSold());
 
         return dto;
+    }
+
+    public void assignRemoteControllerToTelevision(Long id, Long remoteControllerId) {
+        var optionalTelevision = televisionRepository.findById(id);
+        var optionalRemoteController = remoteControllerRepository.findById(remoteControllerId);
+
+        if(optionalTelevision.isPresent() && optionalRemoteController.isPresent()) {
+            var television = optionalTelevision.get();
+            var remoteController = optionalRemoteController.get();
+
+            television.setRemoteController(remoteController);
+            televisionRepository.save(television);
+        } else {
+            throw new RecordNotFoundException();
+        }
+    }
+
+    public void assignCIModuleToTelevision(Long id, Long ciModuleId) {
+        var optionalTelevision = televisionRepository.findById(id);
+        var optionalCIModule = ciModuleRepository.findById(ciModuleId);
+
+        if(optionalTelevision.isPresent() && optionalCIModule.isPresent()) {
+            var television = optionalTelevision.get();
+            var ciModule = optionalCIModule.get();
+
+            television.setCiModule(ciModule);
+            televisionRepository.save(television);
+        } else {
+            throw new RecordNotFoundException();
+        }
     }
 }
