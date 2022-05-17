@@ -68,7 +68,7 @@ public class CIModuleService  {
         return ciModule;
     }
 
-    public CIModuleDto transferToDto(CIModule ciModule){
+    public static CIModuleDto transferToDto(CIModule ciModule){
         var dto = new CIModuleDto();
 
         dto.id = ciModule.getId();
