@@ -1,6 +1,6 @@
 package nl.novi.techiteasy1121.services;
 
-import nl.novi.techiteasy1121.Dtos.CIModuleDto;
+import nl.novi.techiteasy1121.dtos.CIModuleDto;
 import nl.novi.techiteasy1121.exceptions.RecordNotFoundException;
 import nl.novi.techiteasy1121.models.CIModule;
 import nl.novi.techiteasy1121.repositories.CIModuleRepository;

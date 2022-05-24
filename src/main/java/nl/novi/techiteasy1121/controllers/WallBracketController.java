@@ -1,8 +1,8 @@
 package nl.novi.techiteasy1121.controllers;
 
 
-import nl.novi.techiteasy1121.Dtos.TelevisionDto;
-import nl.novi.techiteasy1121.Dtos.WallBracketDto;
+import nl.novi.techiteasy1121.dtos.TelevisionDto;
+import nl.novi.techiteasy1121.dtos.WallBracketDto;
 import nl.novi.techiteasy1121.services.TelevisionWallBracketService;
 import nl.novi.techiteasy1121.services.WallBracketService;
 import org.springframework.beans.factory.annotation.Autowired;

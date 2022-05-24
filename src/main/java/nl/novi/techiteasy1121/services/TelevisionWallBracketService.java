@@ -1,7 +1,7 @@
 package nl.novi.techiteasy1121.services;
 
-import nl.novi.techiteasy1121.Dtos.TelevisionDto;
-import nl.novi.techiteasy1121.Dtos.WallBracketDto;
+import nl.novi.techiteasy1121.dtos.TelevisionDto;
+import nl.novi.techiteasy1121.dtos.WallBracketDto;
 import nl.novi.techiteasy1121.exceptions.RecordNotFoundException;
 import nl.novi.techiteasy1121.models.Television;
 import nl.novi.techiteasy1121.models.TelevisionWallBracket;

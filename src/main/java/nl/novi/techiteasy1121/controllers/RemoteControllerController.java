@@ -1,6 +1,6 @@
 package nl.novi.techiteasy1121.controllers;
 
-import nl.novi.techiteasy1121.Dtos.RemoteControllerDto;
+import nl.novi.techiteasy1121.dtos.RemoteControllerDto;
 import nl.novi.techiteasy1121.services.RemoteControllerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;

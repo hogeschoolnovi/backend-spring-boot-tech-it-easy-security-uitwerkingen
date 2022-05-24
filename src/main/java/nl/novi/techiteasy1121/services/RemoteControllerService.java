@@ -1,6 +1,6 @@
 package nl.novi.techiteasy1121.services;
 
-import nl.novi.techiteasy1121.Dtos.RemoteControllerDto;
+import nl.novi.techiteasy1121.dtos.RemoteControllerDto;
 import nl.novi.techiteasy1121.exceptions.RecordNotFoundException;
 import nl.novi.techiteasy1121.models.RemoteController;
 import nl.novi.techiteasy1121.repositories.RemoteControllerRepository;

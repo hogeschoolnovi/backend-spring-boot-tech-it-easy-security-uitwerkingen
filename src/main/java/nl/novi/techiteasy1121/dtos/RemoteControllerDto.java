@@ -1,4 +1,4 @@
-package nl.novi.techiteasy1121.Dtos;
+package nl.novi.techiteasy1121.dtos;
 // validators mogen jullie eventueel zelf toevoegen
 
 public class RemoteControllerDto {
