@@ -13,7 +13,7 @@ public class CIModuleController {
     private final CIModuleService ciModuleService;
 
     @Autowired
-    public CIModuleController(CIModuleService ciModuleService) {
+    public CIModuleController(CIModuleService ciModuleService){
         this.ciModuleService = ciModuleService;
     }
 
@@ -21,7 +21,7 @@ public class CIModuleController {
     @GetMapping("/cimodules")
     public List<CIModuleDto> getAllCIModules() {
 
-        var dtos = ciModuleService.getAllCIModules();
+        List<CIModuleDto> dtos = ciModuleService.getAllCIModules();
 
         return dtos;
     }

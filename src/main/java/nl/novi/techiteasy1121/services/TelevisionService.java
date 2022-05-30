@@ -161,6 +161,7 @@ public class TelevisionService {
         dto.setAmbiLight(television.getAmbiLight());
         dto.setOriginalStock(television.getOriginalStock());
         dto.setSold(television.getSold());
+        dto.setCiModuleDto(CIModuleService.transferToDto(television.getCiModule()));
 
         return dto;
     }
