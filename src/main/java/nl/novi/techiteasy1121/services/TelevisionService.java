@@ -91,7 +91,7 @@ public class TelevisionService {
         return transferToDto(tv);
     }
 
-    public void deleteTelevision(@RequestBody Long id) {
+    public void deleteTelevision(Long id) {
 
         televisionRepository.deleteById(id);
 
