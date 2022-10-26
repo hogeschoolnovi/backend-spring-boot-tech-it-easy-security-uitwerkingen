@@ -15,6 +15,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.Collection;
 import java.util.HashSet;
+import java.util.List;
 
 @Service
 public class TelevisionWallBracketService{
@@ -89,5 +90,9 @@ public class TelevisionWallBracketService{
         televisionWallBracket.setId(id);
         televisionWallBracketRepository.save(televisionWallBracket);
         return id;
+    }
+
+    public List<TelevisionWallBracket> getAllTelevisionWallBrackets(){
+        return televisionWallBracketRepository.findAll();
     }
 }
