@@ -2,10 +2,8 @@ package nl.novi.techiteasy1121.controllers;
 
 import nl.novi.techiteasy1121.services.TelevisionWallBracketService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/tvwb")
@@ -21,4 +19,10 @@ public class TelevisionWallBracketController {
     public void addTelevisionWallBracket(@PathVariable("televisionId") Long televisionId, @PathVariable("wallBracketId") Long wallbracketId) {
         televisionWallBracketService.addTelevisionWallBracket(televisionId, wallbracketId);
     }
+
+    // Deze klasse gebruiken we alleen voor testen. De TelevisionWallbracket is een implementatiedetail, niet iets waar de gebruiker weet van hoeft te hebben.
+//    @GetMapping("/televisionwallbrackets")
+//    public ResponseEntity<Object> getall(){
+//       return ResponseEntity.ok(televisionWallBracketService.getAllTelevisionWallBrackets());
+//    }
 }
