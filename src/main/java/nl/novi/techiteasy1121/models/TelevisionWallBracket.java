@@ -8,7 +8,7 @@ public class TelevisionWallBracket {
     @EmbeddedId
     private TelevisionWallBracketKey id;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne
     @MapsId("televisionId")
     @JoinColumn(name = "television_id")
     private Television television;
