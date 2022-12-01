@@ -16,6 +16,9 @@ import org.springframework.stereotype.Service;
 import java.util.Collection;
 import java.util.HashSet;
 
+// Deze klasse bevat de service methodes van TelevisionWallBracketController.
+// Deze klasse wijkt af van de andere service-klassen, omdat deze in 3 verschillende controllers wordt ge-autowired.
+
 @Service
 public class TelevisionWallBracketService{
 
@@ -28,37 +31,37 @@ public class TelevisionWallBracketService{
     @Autowired
     private TelevisionWallBracketRepository televisionWallBracketRepository;
 
-    public Collection<TelevisionDto> getTelevisionWallBracketsByWallBracketId(Long wallBracketId) {
+    public Collection<TelevisionDto> getTelevisionsByWallBracketId(Long wallBracketId) {
         Collection<TelevisionDto> dtos = new HashSet<>();
         Collection<TelevisionWallBracket> televisionWallbrackets = televisionWallBracketRepository.findAllByWallBracketId(wallBracketId);
         for (TelevisionWallBracket televisionWallbracket : televisionWallbrackets) {
             Television television = televisionWallbracket.getTelevision();
-            TelevisionDto dto = new TelevisionDto();
+            TelevisionDto televisionDto = new TelevisionDto();
 
-            television.setId(dto.getId());
-            television.setType(dto.getType());
-            television.setBrand(dto.getBrand());
-            television.setName(dto.getName());
-            television.setPrice(dto.getPrice());
-            television.setAvailableSize(dto.getAvailableSize());
-            television.setRefreshRate(dto.getRefreshRate());
-            television.setScreenType(dto.getScreenType());
-            television.setScreenQuality(dto.getScreenQuality());
-            television.setSmartTv(dto.getSmartTv());
-            television.setWifi(dto.getWifi());
-            television.setVoiceControl(dto.getVoiceControl());
-            television.setHdr(dto.getHdr());
-            television.setBluetooth(dto.getBluetooth());
-            television.setAmbiLight(dto.getAmbiLight());
-            television.setOriginalStock(dto.getOriginalStock());
-            television.setSold(dto.getSold());
+            televisionDto.setId(television.getId());
+            televisionDto.setType(television.getType());
+            televisionDto.setBrand(television.getBrand());
+            televisionDto.setName(television.getName());
+            televisionDto.setPrice(television.getPrice());
+            televisionDto.setAvailableSize(television.getAvailableSize());
+            televisionDto.setRefreshRate(television.getRefreshRate());
+            televisionDto.setScreenType(television.getScreenType());
+            televisionDto.setScreenQuality(television.getScreenQuality());
+            televisionDto.setSmartTv(television.getSmartTv());
+            televisionDto.setWifi(television.getWifi());
+            televisionDto.setVoiceControl(television.getVoiceControl());
+            televisionDto.setHdr(television.getHdr());
+            televisionDto.setBluetooth(television.getBluetooth());
+            televisionDto.setAmbiLight(television.getAmbiLight());
+            televisionDto.setOriginalStock(television.getOriginalStock());
+            televisionDto.setSold(television.getSold());
 
-            dtos.add(dto);
+            dtos.add(televisionDto);
         }
         return dtos;
     }
 
-    public Collection<WallBracketDto> getTelevisionWallBracketByTelevisionId(Long televisionId) {
+    public Collection<WallBracketDto> getWallBracketsByTelevisionId(Long televisionId) {
         Collection<WallBracketDto> dtos = new HashSet<>();
         Collection<TelevisionWallBracket> televisionWallbrackets = televisionWallBracketRepository.findAllByTelevisionId(televisionId);
         for (TelevisionWallBracket televisionWallbracket : televisionWallbrackets) {

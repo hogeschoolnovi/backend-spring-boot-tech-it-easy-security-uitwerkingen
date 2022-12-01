@@ -161,9 +161,14 @@ public class TelevisionService {
         dto.setAmbiLight(television.getAmbiLight());
         dto.setOriginalStock(television.getOriginalStock());
         dto.setSold(television.getSold());
+
+        // Als extra op deze transfer methode, voegen we ook de relaties toe.
+        // Hier moeten we eerst een null check voor doen,
+        // omdat we anders in CIModule.transferToDto de get-methodes van "null" aanroepen en dat kan niet.
         if(television.getCiModule() != null){
             dto.setCiModuleDto(CIModuleService.transferToDto(television.getCiModule()));
         }
+
 
         return dto;
     }

@@ -11,6 +11,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
+// Deze klasse bevat de Service methodes van RemoteControllerController
+
 @Service
 public class RemoteControllerService  {
 

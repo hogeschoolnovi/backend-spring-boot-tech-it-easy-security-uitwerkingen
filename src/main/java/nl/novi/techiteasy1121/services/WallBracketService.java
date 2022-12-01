@@ -11,6 +11,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
+// Deze klasse bevat de service methodes van de WallBracketController
 @Service
 public class WallBracketService {
 

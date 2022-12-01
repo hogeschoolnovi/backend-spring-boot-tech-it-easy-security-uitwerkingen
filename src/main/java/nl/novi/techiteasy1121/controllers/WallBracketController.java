@@ -5,7 +5,6 @@ import nl.novi.techiteasy1121.dtos.TelevisionDto;
 import nl.novi.techiteasy1121.dtos.WallBracketDto;
 import nl.novi.techiteasy1121.services.TelevisionWallBracketService;
 import nl.novi.techiteasy1121.services.WallBracketService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Collection;
@@ -15,8 +14,6 @@ import java.util.List;
 public class WallBracketController {
     private final WallBracketService wallBracketService;
     private final TelevisionWallBracketService televisionWallBracketService;
-
-    @Autowired
     public WallBracketController(WallBracketService wallBracketService,
                                  TelevisionWallBracketService televisionWallBracketService) {
         this.wallBracketService = wallBracketService;
@@ -56,8 +53,10 @@ public class WallBracketController {
         return dto;
     }
 
+    // Deze methode haalt alle televisies op die aan een bepaalde wallbracket gekoppeld zijn.
+    // Deze methode maakt gebruikt van de televisionWallBracketService.
     @GetMapping("/wallbrackets/televisions/{wallBracketId}")
     public Collection<TelevisionDto> getTelevisionsByWallBracketId(@PathVariable("wallBracketId") Long wallBracketId){
-        return televisionWallBracketService.getTelevisionWallBracketsByWallBracketId(wallBracketId);
+        return televisionWallBracketService.getTelevisionsByWallBracketId(wallBracketId);
     }
 }

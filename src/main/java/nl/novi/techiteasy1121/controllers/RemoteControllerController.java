@@ -7,11 +7,11 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+// Dit is de Controller klasse van de RemoteController entiteit en heeft vergelijkbare methodes als de TelevisionController.
 @RestController
 public class RemoteControllerController {
     private final RemoteControllerService remoteControllerService;
 
-    @Autowired
     public RemoteControllerController(RemoteControllerService remoteControllerService) {
         this.remoteControllerService = remoteControllerService;
     }

@@ -18,6 +18,7 @@ public class CIModule {
     private String type;
     private Double price;
 
+    // Dit is de target kant van de relatie. Er staat niks in de database
     @OneToMany(mappedBy = "ciModule")
     @JsonIgnore
     List<Television> televisions;
