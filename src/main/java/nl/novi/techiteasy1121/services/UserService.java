@@ -17,11 +17,12 @@ import java.util.Set;
 
 @Service
 public class UserService {
-    @Autowired
-    private UserRepository userRepository;
+    private final UserRepository userRepository;
 
-//    @Autowired
-//    private AuthorityRepository authorityRepository;
+    public UserService(UserRepository userRepository) {
+        this.userRepository = userRepository;
+    }
+
 
     public List<UserDto> getUsers() {
         List<UserDto> collection = new ArrayList<>();

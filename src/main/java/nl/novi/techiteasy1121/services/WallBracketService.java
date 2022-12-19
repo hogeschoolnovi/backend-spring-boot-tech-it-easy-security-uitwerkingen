@@ -14,8 +14,11 @@ import java.util.Optional;
 @Service
 public class WallBracketService {
 
-    @Autowired
-    private WallBracketRepository wallBracketRepository;
+    private final WallBracketRepository wallBracketRepository;
+
+    public WallBracketService(WallBracketRepository wallBracketRepository) {
+        this.wallBracketRepository = wallBracketRepository;
+    }
 
     public List<WallBracketDto> getAllWallBrackets() {
         List<WallBracket> wallBracketList = wallBracketRepository.findAll();

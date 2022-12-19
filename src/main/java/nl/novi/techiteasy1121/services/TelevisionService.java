@@ -16,7 +16,7 @@ import java.util.List;
 @Service
 public class TelevisionService {
 
-    private final TelevisionRepository televisionRepository;
+    private TelevisionRepository televisionRepository;
 
     private final RemoteControllerRepository remoteControllerRepository;
 

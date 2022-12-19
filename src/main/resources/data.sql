@@ -25,7 +25,8 @@ INSERT INTO television_wall_bracket(television_id, wall_bracket_id) values (1004
 INSERT INTO television_wall_bracket(television_id, wall_bracket_id) values (1001, 1004);
 INSERT INTO television_wall_bracket(television_id, wall_bracket_id) values (1001, 1005);
 
--- password = "password"
+-- password = "password" (dit comment is een security lek, zet dit nooit in je code.
+-- Als je hier je plaintext password niet meer weet, moet je een nieuw password encrypted)
 INSERT INTO users (username, password, email, enabled) VALUES ('user', '$2a$12$IzA1Ja1LH4PSMoro9PeITO1etDlknPjSX1nLusgt1vi9c1uaEXdEK','user@test.nl', TRUE);
 INSERT INTO users (username, password, email, enabled) VALUES ('admin', '$2a$12$IzA1Ja1LH4PSMoro9PeITO1etDlknPjSX1nLusgt1vi9c1uaEXdEK', 'admin@test.nl', TRUE);
 

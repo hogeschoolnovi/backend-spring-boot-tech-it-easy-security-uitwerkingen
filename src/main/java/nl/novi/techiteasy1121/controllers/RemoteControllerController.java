@@ -11,7 +11,7 @@ import java.util.List;
 public class RemoteControllerController {
     private final RemoteControllerService remoteControllerService;
 
-    @Autowired
+
     public RemoteControllerController(RemoteControllerService remoteControllerService) {
         this.remoteControllerService = remoteControllerService;
     }

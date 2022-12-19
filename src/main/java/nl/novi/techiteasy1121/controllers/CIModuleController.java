@@ -12,7 +12,7 @@ import java.util.List;
 public class CIModuleController {
     private final CIModuleService ciModuleService;
 
-    @Autowired
+
     public CIModuleController(CIModuleService ciModuleService) {
         this.ciModuleService = ciModuleService;
     }

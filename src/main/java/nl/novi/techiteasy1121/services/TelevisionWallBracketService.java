@@ -20,14 +20,17 @@ import java.util.List;
 @Service
 public class TelevisionWallBracketService{
 
-    @Autowired
-    private TelevisionRepository televisionRepository;
+    private final TelevisionRepository televisionRepository;
 
-    @Autowired
-    private WallBracketRepository wallBracketRepository;
+    private final WallBracketRepository wallBracketRepository;
 
-    @Autowired
-    private TelevisionWallBracketRepository televisionWallBracketRepository;
+    private final TelevisionWallBracketRepository televisionWallBracketRepository;
+
+    public TelevisionWallBracketService(TelevisionRepository televisionRepository, WallBracketRepository wallBracketRepository, TelevisionWallBracketRepository televisionWallBracketRepository) {
+        this.televisionRepository = televisionRepository;
+        this.wallBracketRepository = wallBracketRepository;
+        this.televisionWallBracketRepository = televisionWallBracketRepository;
+    }
 
     public Collection<TelevisionDto> getTelevisionWallBracketsByWallBracketId(Long wallBracketId) {
         Collection<TelevisionDto> dtos = new HashSet<>();

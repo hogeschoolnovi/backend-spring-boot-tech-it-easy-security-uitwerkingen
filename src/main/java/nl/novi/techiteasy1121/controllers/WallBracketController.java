@@ -16,7 +16,7 @@ public class WallBracketController {
     private final WallBracketService wallBracketService;
     private final TelevisionWallBracketService televisionWallBracketService;
 
-    @Autowired
+
     public WallBracketController(WallBracketService wallBracketService,
                                  TelevisionWallBracketService televisionWallBracketService) {
         this.wallBracketService = wallBracketService;

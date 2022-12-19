@@ -14,8 +14,11 @@ import java.util.Optional;
 @Service
 public class RemoteControllerService  {
 
-    @Autowired
-    private RemoteControllerRepository remoteControllerRepository;
+    private final RemoteControllerRepository remoteControllerRepository;
+
+    public RemoteControllerService(RemoteControllerRepository remoteControllerRepository) {
+        this.remoteControllerRepository = remoteControllerRepository;
+    }
 
     public List<RemoteControllerDto> getAllRemoteControllers() {
         List<RemoteControllerDto> dtos = new ArrayList<>();

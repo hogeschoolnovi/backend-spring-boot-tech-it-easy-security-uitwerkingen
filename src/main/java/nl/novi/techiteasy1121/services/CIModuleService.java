@@ -14,8 +14,11 @@ import java.util.Optional;
 @Service
 public class CIModuleService  {
 
-    @Autowired
-    private CIModuleRepository ciModuleRepository;
+    private final CIModuleRepository ciModuleRepository;
+
+    public CIModuleService(CIModuleRepository ciModuleRepository) {
+        this.ciModuleRepository = ciModuleRepository;
+    }
 
     public List<CIModuleDto> getAllCIModules() {
         List<CIModule> ciModules = ciModuleRepository.findAll();

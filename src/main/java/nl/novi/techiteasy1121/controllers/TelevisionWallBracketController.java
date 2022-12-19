@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.*;
 public class TelevisionWallBracketController {
     private TelevisionWallBracketService televisionWallBracketService;
 
-    @Autowired
+
     public TelevisionWallBracketController(TelevisionWallBracketService televisionWallBracketService) {
         this.televisionWallBracketService = televisionWallBracketService;
     }
