@@ -16,7 +16,11 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
-
+/*
+Sinds Spring Boot 5.7 is de WebSecurityConfigurerAdapter deprecated.
+Vanaf Spring Boot 3.0 is de WebSecurityConfigurereAdapter verwijderd.
+Deze branch is voor naslagwerk.
+ */
 @Configuration
 @EnableWebSecurity
 public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
