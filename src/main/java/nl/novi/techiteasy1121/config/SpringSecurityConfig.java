@@ -17,7 +17,9 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
-
+/*  Deze security is niet de enige manier om het te doen.
+    In de andere branch van deze github repo staat een ander voorbeeld
+ */
 @Configuration
 //@EnableWebSecurity
 public class SpringSecurityConfig {
@@ -50,11 +52,10 @@ public class SpringSecurityConfig {
 
 
 
-    // Authorizatie met
+    // Authorizatie met jwt
     @Bean
     protected SecurityFilterChain filter (HttpSecurity http) throws Exception {
 
-        //JWT token authentication
         http
                 .csrf().disable()
                 .httpBasic().disable()
@@ -75,7 +76,6 @@ public class SpringSecurityConfig {
                 .antMatchers(HttpMethod.DELETE, "/wallbrackets/**").hasRole("ADMIN")
                 // Je mag meerdere paths tegelijk definieren
                 .antMatchers("/cimodules", "/remotecontrollers", "/televisions", "/wallbrackets").hasAnyRole("ADMIN", "USER")
-//                .antMatchers("/televisions").hasRole("USER")
                 .antMatchers("/authenticated").authenticated()
                 .antMatchers("/authenticate").permitAll()
                 .and()
