@@ -57,6 +57,7 @@ public class SpringSecurityConfig {
         http
                 .csrf().disable()
                 .httpBasic().disable()
+                .cors().and()
                 .authorizeRequests()
                 // Wanneer je deze uncomments, staat je hele security open. Je hebt dan alleen nog een jwt nodig.
 //                .antMatchers("/**").permitAll()
