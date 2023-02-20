@@ -20,7 +20,7 @@ public class WallBracket {
     private Double price;
 
     // Dit is de target kant van de relatie. Er staat niks in de database
-    @OneToMany(mappedBy = "television")
+    @OneToMany(mappedBy = "wallBracket")
     @JsonIgnore
     List<TelevisionWallBracket> televisionWallBrackets;
 
