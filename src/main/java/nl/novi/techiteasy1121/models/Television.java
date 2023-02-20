@@ -4,7 +4,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.hibernate.annotations.LazyCollection;
 import org.hibernate.annotations.LazyCollectionOption;
 
-import javax.persistence.*;
+import jakarta.persistence.*;
 import java.util.Collection;
 
 @Entity

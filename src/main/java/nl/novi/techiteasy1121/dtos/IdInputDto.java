@@ -1,7 +1,7 @@
 package nl.novi.techiteasy1121.dtos;
 
 
-import javax.validation.constraints.NotNull;
+import jakarta.validation.constraints.NotNull;
 
 public class IdInputDto {
 

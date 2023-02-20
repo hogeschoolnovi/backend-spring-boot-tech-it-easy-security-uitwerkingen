@@ -1,6 +1,6 @@
 package nl.novi.techiteasy1121.dtos;
 
-import javax.validation.constraints.*;
+import jakarta.validation.constraints.*;
 
 public class TelevisionInputDto {
 
