@@ -10,7 +10,6 @@ import nl.novi.techiteasy1121.models.WallBracket;
 import nl.novi.techiteasy1121.repositories.TelevisionRepository;
 import nl.novi.techiteasy1121.repositories.TelevisionWallBracketRepository;
 import nl.novi.techiteasy1121.repositories.WallBracketRepository;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.Collection;
@@ -22,14 +21,17 @@ import java.util.HashSet;
 @Service
 public class TelevisionWallBracketService{
 
-    @Autowired
     private TelevisionRepository televisionRepository;
 
-    @Autowired
     private WallBracketRepository wallBracketRepository;
 
-    @Autowired
     private TelevisionWallBracketRepository televisionWallBracketRepository;
+
+    public TelevisionWallBracketService(TelevisionRepository televisionRepository, WallBracketRepository wallBracketRepository, TelevisionWallBracketRepository televisionWallBracketRepository) {
+        this.televisionRepository = televisionRepository;
+        this.wallBracketRepository = wallBracketRepository;
+        this.televisionWallBracketRepository = televisionWallBracketRepository;
+    }
 
     public Collection<TelevisionDto> getTelevisionsByWallBracketId(Long wallBracketId) {
         Collection<TelevisionDto> dtos = new HashSet<>();

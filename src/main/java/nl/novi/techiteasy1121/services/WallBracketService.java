@@ -4,7 +4,6 @@ import nl.novi.techiteasy1121.dtos.WallBracketDto;
 import nl.novi.techiteasy1121.exceptions.RecordNotFoundException;
 import nl.novi.techiteasy1121.models.WallBracket;
 import nl.novi.techiteasy1121.repositories.WallBracketRepository;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -15,8 +14,12 @@ import java.util.Optional;
 @Service
 public class WallBracketService {
 
-    @Autowired
+
     private WallBracketRepository wallBracketRepository;
+
+    public WallBracketService(WallBracketRepository wallBracketRepository) {
+        this.wallBracketRepository = wallBracketRepository;
+    }
 
     public List<WallBracketDto> getAllWallBrackets() {
         List<WallBracket> wallBracketList = wallBracketRepository.findAll();

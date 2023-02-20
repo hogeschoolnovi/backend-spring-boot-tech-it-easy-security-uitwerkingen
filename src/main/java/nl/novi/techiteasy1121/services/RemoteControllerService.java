@@ -4,7 +4,6 @@ import nl.novi.techiteasy1121.dtos.RemoteControllerDto;
 import nl.novi.techiteasy1121.exceptions.RecordNotFoundException;
 import nl.novi.techiteasy1121.models.RemoteController;
 import nl.novi.techiteasy1121.repositories.RemoteControllerRepository;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -16,8 +15,11 @@ import java.util.Optional;
 @Service
 public class RemoteControllerService  {
 
-    @Autowired
     private RemoteControllerRepository remoteControllerRepository;
+
+    public RemoteControllerService(RemoteControllerRepository remoteControllerRepository) {
+        this.remoteControllerRepository = remoteControllerRepository;
+    }
 
     public List<RemoteControllerDto> getAllRemoteControllers() {
         List<RemoteControllerDto> dtos = new ArrayList<>();

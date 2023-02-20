@@ -4,7 +4,6 @@ import nl.novi.techiteasy1121.dtos.CIModuleDto;
 import nl.novi.techiteasy1121.exceptions.RecordNotFoundException;
 import nl.novi.techiteasy1121.models.CIModule;
 import nl.novi.techiteasy1121.repositories.CIModuleRepository;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -16,8 +15,12 @@ import java.util.Optional;
 @Service
 public class CIModuleService  {
 
-    @Autowired
+
     private CIModuleRepository ciModuleRepository;
+
+    public CIModuleService(CIModuleRepository ciModuleRepository) {
+        this.ciModuleRepository = ciModuleRepository;
+    }
 
     public List<CIModuleDto> getAllCIModules() {
         List<CIModule> ciModules = ciModuleRepository.findAll();
