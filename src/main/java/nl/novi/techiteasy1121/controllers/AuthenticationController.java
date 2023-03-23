@@ -1,10 +1,9 @@
 package nl.novi.techiteasy1121.controllers;
 
-import nl.novi.techiteasy1121.payload.AuthenticationRequest;
-import nl.novi.techiteasy1121.payload.AuthenticationResponse;
+import nl.novi.techiteasy1121.dtos.AuthenticationRequest;
+import nl.novi.techiteasy1121.dtos.AuthenticationResponse;
 import nl.novi.techiteasy1121.services.CustomUserDetailsService;
 import nl.novi.techiteasy1121.utils.JwtUtil;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.BadCredentialsException;

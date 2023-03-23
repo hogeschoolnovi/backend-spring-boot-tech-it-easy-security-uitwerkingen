@@ -19,7 +19,6 @@ public class RemoteController {
     private Double price;
     private Integer originalStock;
 
-    // Dit is de target kant van de relatie. Er staat niks in de database
     @OneToOne(mappedBy = "remoteController")
     Television television;
 
