@@ -1,7 +1,9 @@
 package nl.novi.techiteasy1121.controllers;
 
+import nl.novi.techiteasy1121.models.TelevisionWallBracketKey;
 import nl.novi.techiteasy1121.services.TelevisionWallBracketService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -21,7 +23,8 @@ public class TelevisionWallBracketController {
     }
 
     @PostMapping("/{televisionId}/{wallBracketId}")
-    public void addTelevisionWallBracket(@PathVariable("televisionId") Long televisionId, @PathVariable("wallBracketId") Long wallbracketId) {
-        televisionWallBracketService.addTelevisionWallBracket(televisionId, wallbracketId);
+    public ResponseEntity<TelevisionWallBracketKey> addTelevisionWallBracket(@PathVariable("televisionId") Long televisionId, @PathVariable("wallBracketId") Long wallbracketId) {
+        TelevisionWallBracketKey key = televisionWallBracketService.addTelevisionWallBracket(televisionId, wallbracketId);
+        return ResponseEntity.created(null).body(key);
     }
 }

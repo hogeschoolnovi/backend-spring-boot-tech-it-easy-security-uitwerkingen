@@ -50,7 +50,7 @@ public class WallBracketService {
         wallBracketRepository.deleteById(id);
     }
 
-    public void updateWallBracket(Long id, WallBracketDto wallBracketDto) {
+    public WallBracketDto updateWallBracket(Long id, WallBracketDto wallBracketDto) {
         if(!wallBracketRepository.existsById(id)) {
             throw new RecordNotFoundException("No wallbracket found");
         }
@@ -60,7 +60,7 @@ public class WallBracketService {
         storedWallBracket.setAdjustable(wallBracketDto.getAdjustable());
         storedWallBracket.setName(wallBracketDto.getName());
         storedWallBracket.setPrice(wallBracketDto.getPrice());
-        wallBracketRepository.save(storedWallBracket);
+        return transferToDto(wallBracketRepository.save(storedWallBracket));
     }
 
     public WallBracketDto transferToDto(WallBracket wallBracket){
