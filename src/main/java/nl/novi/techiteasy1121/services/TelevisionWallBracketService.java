@@ -14,6 +14,8 @@ import org.springframework.stereotype.Service;
 
 import java.util.Collection;
 import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
 
 // Deze klasse bevat de service methodes van TelevisionWallBracketController.
 // Deze klasse wijkt af van de andere service-klassen, omdat deze in 3 verschillende controllers wordt ge-autowired.
@@ -63,9 +65,11 @@ public class TelevisionWallBracketService{
         return dtos;
     }
 
+    // Collection is de super klasse van zowel List als Set.
     public Collection<WallBracketDto> getWallBracketsByTelevisionId(Long televisionId) {
-        Collection<WallBracketDto> dtos = new HashSet<>();
-        Collection<TelevisionWallBracket> televisionWallbrackets = televisionWallBracketRepository.findAllByTelevisionId(televisionId);
+        //We gebruiken hier Set om te voorkomen dat er dubbele entries in staan.
+        Set<WallBracketDto> dtos = new HashSet<>();
+        List<TelevisionWallBracket> televisionWallbrackets = televisionWallBracketRepository.findAllByTelevisionId(televisionId);
         for (TelevisionWallBracket televisionWallbracket : televisionWallbrackets) {
             WallBracket wallBracket = televisionWallbracket.getWallBracket();
             var dto = new WallBracketDto();

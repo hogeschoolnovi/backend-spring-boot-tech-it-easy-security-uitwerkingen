@@ -1,3 +1,4 @@
+-- In deze data.sql gebruiken we expliciete id's
 INSERT INTO wall_bracket (id, size, adjustable, name, price) VALUES (1001, '25X32', false, 'LG bracket', 32.23),
 (1002, '25X32/32X40', true, 'LG bracket', 32.23),
 (1003, '25X25', false, 'Philips bracket', 32.23),

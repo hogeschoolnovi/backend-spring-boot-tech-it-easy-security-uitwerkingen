@@ -3,6 +3,7 @@ package nl.novi.techiteasy1121.controllers;
 import nl.novi.techiteasy1121.dtos.RemoteControllerDto;
 import nl.novi.techiteasy1121.services.RemoteControllerService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -18,36 +19,37 @@ public class RemoteControllerController {
 
 
     @GetMapping("/remotecontrollers")
-    public List<RemoteControllerDto> getAllRemotecontrollers() {
+    public ResponseEntity<List<RemoteControllerDto>> getAllRemotecontrollers() {
 
         List<RemoteControllerDto> dtos = remoteControllerService.getAllRemoteControllers();
 
-        return dtos;
+        return ResponseEntity.ok(dtos);
     }
 
     @GetMapping("/remotecontrollers/{id}")
-    public RemoteControllerDto getRemotecontroller(@PathVariable("id") Long id) {
+    public ResponseEntity<RemoteControllerDto> getRemotecontroller(@PathVariable("id") Long id) {
 
         RemoteControllerDto dto = remoteControllerService.getRemoteController(id);
 
-        return dto;
+        return ResponseEntity.ok(dto);
     }
 
     @PostMapping("/remotecontrollers")
-    public RemoteControllerDto addRemoteController(@RequestBody RemoteControllerDto dto) {
+    public ResponseEntity<RemoteControllerDto> addRemoteController(@RequestBody RemoteControllerDto dto) {
         RemoteControllerDto dto1 = remoteControllerService.addRemoteController(dto);
-        return dto1;
+        return ResponseEntity.created(null).body(dto1);
     }
 
     @DeleteMapping("/remotecontrollers/{id}")
-    public void deleteRemoteController(@PathVariable("id") Long id) {
+    public ResponseEntity<Object> deleteRemoteController(@PathVariable("id") Long id) {
         remoteControllerService.deleteRemoteController(id);
+        return ResponseEntity.noContent().build();
     }
 
     @PutMapping("/remotecontrollers/{id}")
-    public RemoteControllerDto updateTelevision(@PathVariable("id") Long id, @RequestBody RemoteControllerDto dto) {
+    public ResponseEntity<RemoteControllerDto> updateTelevision(@PathVariable("id") Long id, @RequestBody RemoteControllerDto dto) {
        remoteControllerService.updateRemoteController(id, dto);
-        return dto;
+        return ResponseEntity.ok(dto);
     }
 
 }
