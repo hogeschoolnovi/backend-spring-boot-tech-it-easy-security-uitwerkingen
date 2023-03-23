@@ -2,10 +2,10 @@ package nl.novi.techiteasy1121.models;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.OneToMany;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 import java.util.List;
 
 @Entity
@@ -19,7 +19,8 @@ public class WallBracket {
     private String name;
     private Double price;
 
-    @OneToMany(mappedBy = "television")
+    // Dit is de target kant van de relatie. Er staat niks in de database
+    @OneToMany(mappedBy = "wallBracket")
     @JsonIgnore
     List<TelevisionWallBracket> televisionWallBrackets;
 

@@ -1,9 +1,9 @@
 package nl.novi.techiteasy1121.models;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.OneToOne;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.Id;
+import jakarta.persistence.OneToOne;
 
 @Entity
 public class RemoteController {
@@ -19,6 +19,7 @@ public class RemoteController {
     private Double price;
     private Integer originalStock;
 
+    // Dit is de target kant van de relatie. Er staat niks in de database
     @OneToOne(mappedBy = "remoteController")
     Television television;
 

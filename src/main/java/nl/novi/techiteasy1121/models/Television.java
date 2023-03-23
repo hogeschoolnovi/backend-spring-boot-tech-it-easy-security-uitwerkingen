@@ -4,7 +4,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.hibernate.annotations.LazyCollection;
 import org.hibernate.annotations.LazyCollectionOption;
 
-import javax.persistence.*;
+import jakarta.persistence.*;
 import java.util.Collection;
 
 @Entity
@@ -32,6 +32,21 @@ public class Television {
     private Boolean ambiLight;
     private Integer originalStock;
     private Integer sold;
+
+    // Dit is de owner kan van de relatie. Er staat een foreign key in de database
+    @OneToOne
+    RemoteController remoteController;
+
+    // Dit is de owner kan van de relatie. Er staat een foreign key in de database
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "ci_module_id")
+    private CIModule ciModule;
+
+    // Dit is de target kant van de relatie. Er staat niks in de database
+    @OneToMany(mappedBy = "television")
+    @LazyCollection(LazyCollectionOption.FALSE)
+    @JsonIgnore
+    Collection<TelevisionWallBracket> televisionWallBrackets;
 
 //    constructors hoeven niet per se aangemaakt te worden
     // Een default constructor
@@ -74,18 +89,6 @@ public class Television {
         this.originalStock = originalStock;
         this.sold = sold;
     }
-
-    @OneToOne
-    RemoteController remoteController;
-
-    @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "ci_module_id")
-    private CIModule ciModule;
-
-    @OneToMany(mappedBy = "television")
-    @LazyCollection(LazyCollectionOption.FALSE)
-    @JsonIgnore
-    Collection<TelevisionWallBracket> televisionWallBrackets;
 
     //  Alle variable getters
     public Long getId() {

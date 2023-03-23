@@ -4,17 +4,18 @@ import nl.novi.techiteasy1121.dtos.WallBracketDto;
 import nl.novi.techiteasy1121.exceptions.RecordNotFoundException;
 import nl.novi.techiteasy1121.models.WallBracket;
 import nl.novi.techiteasy1121.repositories.WallBracketRepository;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
+// Deze klasse bevat de service methodes van de WallBracketController
 @Service
 public class WallBracketService {
 
-    private final WallBracketRepository wallBracketRepository;
+
+    private WallBracketRepository wallBracketRepository;
 
     public WallBracketService(WallBracketRepository wallBracketRepository) {
         this.wallBracketRepository = wallBracketRepository;
@@ -49,7 +50,7 @@ public class WallBracketService {
         wallBracketRepository.deleteById(id);
     }
 
-    public void updateWallBracket(Long id, WallBracketDto wallBracketDto) {
+    public WallBracketDto updateWallBracket(Long id, WallBracketDto wallBracketDto) {
         if(!wallBracketRepository.existsById(id)) {
             throw new RecordNotFoundException("No wallbracket found");
         }
@@ -59,7 +60,7 @@ public class WallBracketService {
         storedWallBracket.setAdjustable(wallBracketDto.getAdjustable());
         storedWallBracket.setName(wallBracketDto.getName());
         storedWallBracket.setPrice(wallBracketDto.getPrice());
-        wallBracketRepository.save(storedWallBracket);
+        return transferToDto(wallBracketRepository.save(storedWallBracket));
     }
 
     public WallBracketDto transferToDto(WallBracket wallBracket){

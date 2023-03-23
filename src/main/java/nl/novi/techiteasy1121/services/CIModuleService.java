@@ -4,17 +4,19 @@ import nl.novi.techiteasy1121.dtos.CIModuleDto;
 import nl.novi.techiteasy1121.exceptions.RecordNotFoundException;
 import nl.novi.techiteasy1121.models.CIModule;
 import nl.novi.techiteasy1121.repositories.CIModuleRepository;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
+// Deze klasse bevat de service methodes van de CIModuleController
+
 @Service
 public class CIModuleService  {
 
-    private final CIModuleRepository ciModuleRepository;
+
+    private CIModuleRepository ciModuleRepository;
 
     public CIModuleService(CIModuleRepository ciModuleRepository) {
         this.ciModuleRepository = ciModuleRepository;
@@ -71,7 +73,7 @@ public class CIModuleService  {
         return ciModule;
     }
 
-    public CIModuleDto transferToDto(CIModule ciModule){
+    public static CIModuleDto transferToDto(CIModule ciModule){
         var dto = new CIModuleDto();
 
         dto.id = ciModule.getId();
