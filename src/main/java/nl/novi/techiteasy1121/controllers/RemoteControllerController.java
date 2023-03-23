@@ -4,6 +4,7 @@ import nl.novi.techiteasy1121.dtos.RemoteControllerDto;
 import nl.novi.techiteasy1121.services.RemoteControllerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.parameters.P;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -42,8 +43,13 @@ public class RemoteControllerController {
 
     @DeleteMapping("/remotecontrollers/{id}")
     public ResponseEntity<Object> deleteRemoteController(@PathVariable("id") Long id) {
-        remoteControllerService.deleteRemoteController(id);
-        return ResponseEntity.noContent().build();
+        Boolean check = remoteControllerService.deleteRemoteController(id);
+        // Als de service methode een true returned (succesvolle delete), returnen we een noContent, anders returnen we een badRequest
+        if(check) {
+            return ResponseEntity.noContent().build();
+        } else {
+            return ResponseEntity.badRequest().body("Het id dat je probeert te verwijderen bestaat niet.");
+        }
     }
 
     @PutMapping("/remotecontrollers/{id}")

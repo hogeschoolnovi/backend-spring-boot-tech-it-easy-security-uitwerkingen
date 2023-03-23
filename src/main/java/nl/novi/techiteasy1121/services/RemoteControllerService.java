@@ -46,8 +46,14 @@ public class RemoteControllerService  {
         return remoteControllerDto;
     }
 
-    public void deleteRemoteController(Long id) {
-        remoteControllerRepository.deleteById(id);
+    public Boolean deleteRemoteController(Long id) {
+        if(remoteControllerRepository.existsById(id)) {
+            remoteControllerRepository.deleteById(id);
+            //return true als het deleten is geslaagd
+            return true;
+        }
+        //return false als het id niet in de DB staat en het deleten dus niet is geslaagd.
+        return false;
     }
 
     public void updateRemoteController(Long id, RemoteControllerDto remoteControllerDto) {
