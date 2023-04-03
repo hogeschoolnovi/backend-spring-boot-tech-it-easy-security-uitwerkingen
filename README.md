@@ -2,71 +2,94 @@
 
 ## Inleiding
 
-Je bent net begonnen als developer bij een bedrijf dat TV's verkoopt: Tech It Easy. Tijdens de cursus Spring Boot ga jij een backend applicatie programmeren voor het bedrijf. De winkel heeft een inventaris van televisies die moet worden bijgehouden. Na iedere les gaan we deze applicatie een stukje verder uitbouwen door middel van de huiswerkopdrachten. Zo krijg je stap-voor-stap meer ervaring in het bouwen van een backend applicatie. Aan het einde van de cursus zullen we een werkende Tech It Easy backend applicatie hebben!
+Je bent net begonnen als developer bij een bedrijf genaamd Tech It Easy, dat tv’s verkoopt. Tijdens de cursus Spring Boot ga jij een backend applicatie voor het bedrijf programmeren. De winkel heeft een inventaris van televisies die moet worden bijgehouden. Na iedere les gaan we deze applicatie een stukje verder uitbouwen in de vorm van huiswerk. Zo krijgen we stap-voor-stap meer ervaring in het bouwen van een backend applicatie. Aan het einde van de cursus zullen we een werkende Tech It Easy backend hebben!
 
 ## Recap van vorige opdracht
 
-Je hebt inmiddels je applicatie draaiende gekregen. Dit geeft je de mogelijkheid om in een database bij te houden welke tv's er zijn in de inventaris van TechItEasy. Als je de benamingen hebt aangehouden die we tot nu toe hebben gebruikt, kunnen we een _data.sql_ gaan maken waardoor we gegevens in de database kunnen zetten. Dit is een soort van pre-fill van je database.
+De vorige opdracht was een best pittige opgave, maar als alles gelukt is, heb je een applicatie met meerdere modellen en relaties gevormd. Super gaaf! Hier wordt de opdrachtgever dolblij van, maar hij vindt wel dat er veilig gebruikgemaakt moet worden van de app. Het zou niet tof zijn als de inventaris bijvoorbeeld door klanten zelf aangepast kan worden. Hiervoor moet je gaan nadenken over een inlogsysteem. Daar komt veel bij kijken. Je wilt namelijk niet dat een `Hacker` deze met gemak het inlogsysteem kan omzeilen. Daarom is het belangrijk om het inloggen te beveiligen. Dat ga je in deze opdracht doen.
 
-## Opdrachtbeschrijving
-In deze opdracht ga je aan de slag met het toevoegen van relaties aan je applicatie.
+## De opdracht
+Maak de beveiliging voor de applicatie met een JWT. Zorg hierbij dat er een user(employee) aangemaakt kan worden door de admin en dat de user en admin verschillende dingen (taken) mogen/kunnen. Enkel iemand met een admin-rol mag bijvoorbeeld authorities aanmaken of verwijderen en alle users opvragen.
 
 ## Randvoorwaarden
 De opdracht moet voldoen aan de volgende voorwaarden:
-
-Het project bevat de volgende `Models`:
-- `Television`
-- `RemoteController` met de _variables_:
-  -_Long_`id`
-  -_String_`compatibleWith`
-  -_String_`batteryType`
-  -_String_`name`
-  -_String_`brand`
-  -_Double_ `price`
-  -_Integer_ `originalStock`
-- `CI-Module` met de _variables_:
-  -_Long_ `id`
-  -_String_ `name`
-  -_String_ `type`
-  -_Double_ `price`
-- `WallBracket` met de _variables_:
-  -_Long_ `id`
-  -_String_ `size`
-  -_Boolean_ `ajustable`
-  -_String_ `name`
-  -_Double_ `price`
-  Voor elk van deze modellen bevat je applicatie ook een `Repository`, `Controller`, `Dto`, `InputDto` en een `Service`.
-
-Daarnaast bevat het project:
-- Een `OneToOne` relatie tussen `Television` en `RemoteController`
-- Een `OneToMany` relatie tussen `Television` en `CI-Module`
-- Een `ManyToMany` relatie tussen `Television`en `WallBracket`
+- De `POM` bevat de _spring-boot-starter-security_, _jjwt-api_, _jjwt-impl_ en _jjwt-jackson_ dependencies
+- De applicatie bevat:
+  - `GlobalCorsConfiguration`
+  - `SpringSecurityConfig`
+  - `AuthenticationController`
+  - `UserController`
+  - `UserDto` (of `UserDto en UserInputDto`)
+  - `UsernameNotFoundException`
+  - `JWTFilter`
+  - `Authority`
+  - `AuthorityKey`
+  - `User`
+  - `AuthenticationRequest`(vorm van inputDto)
+  - `AuthenticationResponse` (vorm van dto)
+  - `UserRepository`
+  - `CustomUserDetailService`
+  - `UserService`
+  - `JwtUtil`
+  - `RandomStringGenerator`
+- Binnen de applicatie wordt rekening gehouden met CORS
+- De applicatie moet draaien met toegang tot de endpoints voor de juiste gebruikers geven
 
 ### Belangrijk
-Je mag de constructors uit de modellen weglaten. Deze vult Spring Boot automatisch in als ze niet gedefinieerd zijn. Ook uit de `Television` mogen de constructors verwijderd worden.
+- De applicatie moet geen toegang geven zonder authenticatie en identificatie;
+- De applicatie heeft een user(employee)- en een admin-rol;
+- De applicatie moet draaien met toegang tot de endpoints voor de juiste gebruikers;
+- Los alle comments op uit de toegevoegde klassen, na het kopiëren en plakken van die klassen.
 
 ## Stappenplan
-_Let op_: het is uitdagender om jouw eigen stappenplan te maken. Mocht je niet zo goed weten waar je moet beginnen, kun je onderstaand stappenplan volgen:
 
-1. Maak in de map `Models` een _klasse_ aan voor `RemoteController`, `CI-Module` en `WallBracket` (voeg de juiste _annotatie_, _variables_, _getters&setters_ en _constructors_ toe).
-2. Maak in de map `Repositories` voor elk model een `Repository` aan (die elk de `JpaRepository` _extends_ bevat).
-3. Maak in de map `Controllers` voor elk model een `Controller` aan (met juiste _annotatie_, _@Autowired_ en _requestMappings_).
-4. Maak in de map `Dtos` voor elk model een `Dto` en `InputDto` aan (met juiste _variables_ en toewijzingen).
-5. Maak in de map `Services` voor elk model een `Service` aan (met juiste _annotatie_, _@Autowired_ en _functions_).
-6. Leg een OneToOne relatie tussen `Television` en `RemoteController` door in beide _models_ _@OneToOne_ toe te voegen, gevolgd door het model waar de relatie mee ligt in de vorm van `Model` `object` (bijvoorbeeld `Television` `television`) op de volgende regel.
-7. Een OneToOne relatie heeft een eigenaar nodig. Maak de `Television` eigenaar door in `RemoteController` achter de _@OneToOne_ _mappedBy_ toe te voegen op deze manier _@OneToOne(mappedBy = "remotecontroller"). Dit zorgt ervoor dat in de `Television` tabel een kolom wordt toegevoegd met de naam `remotecontroller_id`. Vergeet niet de getter en setter toe te voegen na het leggen van de relatie in de modellen.
-8. Om deze kolom te vullen zal je in _servicelaag_ ook een functie moeten maken die een koppeling maakt tussen de `Television` en de `RemoteController`. Dit doe je in de `TelevisionService`.
-9. Voeg de functie "assignRemoteControllerToTelevision" toe in de `TelevisionService`. Zoals je ziet, herkent de `TelevisionService` de `RemoteControllerRepository` niet, dit komt omdat we deze nog niet gekoppeld hebben met een _@Autowired_, gelukkig hoef je niet alles opnieuw te doen. Je kan bovenaan in de `TelevisionService` onder de private `TelevisionRepository` een private `RemoteControllerRepository` declareren. En dan in de bestaande _@Autowired_ deze toevoegen op dezelfde manier als de `TelevisionRepository`. Dit resulteert in:
-   `@Autowired
-   public TelevisionService (TelevisionRepository televisionRepository, RemoteControllerRepository remoteControllerRepository) {
-   this.televisionRepository = televisionRepository;
-   this.remoteControllerRepository = remoteControllerRepository;}`
-10. Om deze functie uit te kunnen voeren moet je in de `TelevisionController` een _PutRequest_ maken met endpoint _"/televisions/{id}/remotecontroller"_ om aan te spreken. Voeg deze toe en geef de _televisionId_ mee als _@PathVariable_ en de _remoteControllerId_ als _@RequestBody_ door middel van een `IdInputDto` _input_.
-11. Hiervoor missen we nog de `IdInputDto`. Maak in het mapje `Dtos` een nieuwe klasse aan voor de `IdInputDto`. Declareer in deze dto een _public Long id_ toe, meer hoeft er niet in.
-12. Gefeliciteerd, je hebt zo juist de eerste relatie gelegd in je applicatie!
-13. Alleen als je nu met een get alle `Televisions` ophaalt, zie je geen `RemoteController`. Dit komt omdat we in de `TelevisionDto` nog niks hebben verteld over de `RemoteController`. De makkelijkste manier om hier de connectie te leggen is de `public RemoteControllerDto remoteController;` toe te voegen aan de variabele van de `TelevisionDto`
-14. Test alle functies die je tot nu toe hebt gemaakt met Postman.
+1. Voeg de volgende dependencies toe aan je POM.XML.
+- `<dependency>
+  <groupId>org.springframework.boot</groupId>
+  <artifactId>spring-boot-starter-security</artifactId>
+  </dependency>`
+- ` <dependency>
+  <groupId>io.jsonwebtoken</groupId>
+  <artifactId>jjwt-api</artifactId>
+  <version>0.11.5</version>
+  </dependency>`
+- `<dependency>
+  <groupId>io.jsonwebtoken</groupId>
+  <artifactId>jjwt-impl</artifactId>
+  <version>0.11.5</version>
+  <scope>runtime</scope>
+  </dependency>`
+- `<dependency>
+  <groupId>io.jsonwebtoken</groupId>
+  <artifactId>jjwt-jackson</artifactId>
+  <version>0.11.5</version>
+  <scope>runtime</scope>
+  </dependency>`
 
-## Bonusopdrachten
-In deze opdracht heb ik een relatie uitgelegd aan de hand van het stappenplan. Als je hier makkelijk doorheen gaat, mag je ook de _one to many_ relatie maken tussen `Television` en `CIModule`. Hierbij is het nodig dat meerdere tv's één ci-module kunnen hebben.
-Als zelfs de _one to many_ redelijk eenvoudig voor je is, mag je een _many to many_ relatie leggen tussen `Television` en `WallBracket`. Dus meerdere tv's kunnen meerdere wallbrackets hebben en andersom.
+2. Voeg de `User`, `Authority` en de `AuthorityKey` toe als modellen.
+
+3. Voeg een `UserRepository` toe aan het project.
+
+4. Voeg de `UserDto` toe aan de applicatie.
+
+5. Voeg een map toe genaamd `utils`. Voeg hier de `JwtUtil` en de `RandomStringGenerator` toe aan het project.
+
+6. Voeg de `UserService` en de `CustomUserDetailService` toe aan het project.
+
+7. Voeg de `BadRequestException` en de `UsernameNotFoundException` toe aan je project en zorg dat de exception handlers zijn toegevoegd in je `ExceptionController`.
+
+8. Voeg een nieuwe map genaamd `payload` met daarin de `AuthenticationRequest` en de `AuthenticationResponse` toe aan het project.
+
+9. Voeg de `AuthenticationController` en de `UserController` toe aan je project.
+
+10. Voeg de `JwtRequestFilter` toe aan je project in een map genaamd `filter`.
+
+11. Voeg als laatste de `SpringSecurityConfig` en de `GlobalCorsConfiguration` toe aan het project.
+
+12. Kijk goed of je in de `SpringSecurityConfig` nog requestmatchers wil/moet toevoegen.
+
+13. Update de data.sql met users en authorities.
+
+14. Check goed of je alle opdracht-comments hebt uitgevoerd en er geen fouten meer in de applicatie zitten.
+
+

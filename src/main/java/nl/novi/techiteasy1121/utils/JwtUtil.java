@@ -17,7 +17,8 @@ import java.util.function.Function;
 @Service
 public class JwtUtil {
 
-    private final static String SECRET_KEY = "secretghshtshtshfgfrefgrgregrgregregrgregrgregergregedgergregdfgegregregds";
+    // De secret key moet minimaal 256 bits lang zijn, of grofweg 45 characters
+    private final static String SECRET_KEY = "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa";
 
     private Key getSigningKey() {
         byte[] keyBytes = Decoders.BASE64.decode(SECRET_KEY);
