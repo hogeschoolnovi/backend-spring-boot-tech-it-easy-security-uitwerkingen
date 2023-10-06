@@ -44,6 +44,9 @@ public class UserController {
     @PostMapping(value = "")
     public ResponseEntity<UserDto> createKlant(@RequestBody UserDto dto) {;
 
+        // Let op: het password van een nieuwe gebruiker wordt in deze code nog niet encrypted opgeslagen.
+        // Je kan dus (nog) niet inloggen met een nieuwe user.
+
         String newUsername = userService.createUser(dto);
         userService.addAuthority(newUsername, "ROLE_USER");
 

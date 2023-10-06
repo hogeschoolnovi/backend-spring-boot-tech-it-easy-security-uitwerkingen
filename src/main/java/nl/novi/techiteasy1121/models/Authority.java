@@ -8,6 +8,8 @@ import java.io.Serializable;
 @Table(name = "authorities")
 public class Authority implements Serializable {
 
+    // We noemen deze klasse "Authority", maar je mag het ook "Roles" of "Bananas" noemen, zolang je dat maar overal doet waar deze klasse gebruikt wordt.
+
     @Id
     @Column(nullable = false)
     private String username;

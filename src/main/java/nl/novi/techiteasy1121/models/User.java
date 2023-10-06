@@ -8,6 +8,7 @@ import java.util.Set;
 @Table(name = "users")
 public class User {
 
+    // Deze eerste 3 variabelen zijn verplicht om te kunnen inloggen met een username, password en rol.
     @Id
     @Column(nullable = false, unique = true)
     private String username;
@@ -15,14 +16,6 @@ public class User {
     @Column(nullable = false, length = 255)
     private String password;
 
-    @Column(nullable = false)
-    private boolean enabled = true;
-
-    @Column
-    private String apikey;
-
-    @Column
-    private String email;
 
     @OneToMany(
             targetEntity = Authority.class,
@@ -31,6 +24,17 @@ public class User {
             orphanRemoval = true,
             fetch = FetchType.EAGER)
     private Set<Authority> authorities = new HashSet<>();
+
+    // Deze 3 variabelen zijn niet verplicht.
+    // Je mag ook een "String banaan;" toevoegen, als je dat graag wilt.
+    @Column(nullable = false)
+    private boolean enabled = true;
+
+    @Column
+    private String apikey;
+
+    @Column
+    private String email;
 
     public String getUsername() { return username; }
     public void setUsername(String username) {
