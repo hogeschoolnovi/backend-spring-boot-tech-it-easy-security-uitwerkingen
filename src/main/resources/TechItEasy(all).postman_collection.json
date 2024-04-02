@@ -1,0 +1,776 @@
+{
+	"info": {
+		"_postman_id": "d452dd1d-3e39-4b80-b551-173bf98c2b32",
+		"name": "TechItEasy(all)",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "18067175",
+		"_collection_link": "https://warped-shadow-106239.postman.co/workspace/Novi~0486d1af-d77b-4a65-bf99-069b7558088e/collection/18067175-d452dd1d-3e39-4b80-b551-173bf98c2b32?action=share&source=collection_link&creator=18067175"
+	},
+	"item": [
+		{
+			"name": "CIModule",
+			"item": [
+				{
+					"name": "postCImodule",
+					"request": {
+						"method": "POST",
+						"header": []
+					},
+					"response": []
+				},
+				{
+					"name": "putCImodule",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"ziggo\",\r\n    \"type\": \"snel\",\r\n    \"price\": 10\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/cimodules/4001",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"cimodules",
+								"4001"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getallcimodule",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/cimodules",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"cimodules"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "putTelevisionInCImodule",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\": 1003\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/cimodules/4002/television",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"cimodules",
+								"4002",
+								"television"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "deletecimodule",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/cimodules/4002",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"cimodules",
+								"4002"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getcimodule4001",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/cimodules/4001",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"cimodules",
+								"4001"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "RemoteController",
+			"item": [
+				{
+					"name": "get3001RemoteController",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/remotecontrollers/3001",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"remotecontrollers",
+								"3001"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "putRemoteController",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"compatibleWith\": \"tv\",\r\n    \"batteryType\": \"aa\",\r\n    \"name\": \"remote\",\r\n    \"brand\": \"samsung\",\r\n    \"price\": 110,\r\n    \"originalStock\": 200\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/remotecontrollers/3001",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"remotecontrollers",
+								"3001"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "deleteRemoteController",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/remotecontrollers/3002",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"remotecontrollers",
+								"3002"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "postRemoteController",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "\r\n{\r\n    \"compatibleWith\": \"all\",\r\n    \"batteryType\": \"aaa\",\r\n    \"name\": \"remote\",\r\n    \"brand\": \"nikkei\",\r\n    \"price\": 100,\r\n    \"originalStock\": 400\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/remotecontrollers",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"remotecontrollers"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getallRemoteController",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/remotecontrollers",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"remotecontrollers"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Television",
+			"item": [
+				{
+					"name": "getallTelevision",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/televisions",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"televisions"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get1001Television",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/televisions/1001",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"televisions",
+								"1001"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "postTelevision",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    type: \"43PUS6504/12\",\r\n    \"name\": \"4K TV\",\r\n    \"brand\": \"Philips\",\r\n    \"price\": 379,\r\n    \"availableSize\": 43,\r\n    \"refreshRate\": 50,\r\n    \"screenType\": \"LED\",\r\n    \"screenQuality\": \"Ultra HD/4K\",\r\n    \"smarttv\": true,\r\n    \"wifi\": true,\r\n    \"voiceControl\": false,\r\n    \"hdr\": true,\r\n    \"bluetooth\": false,\r\n    \"ambiLight\": false,\r\n    \"originalStock\": 23,\r\n    \"sold\": 2\r\n  }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/televisions",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"televisions"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "put1Television",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"type\": \"43PUS6504/12\",\r\n    \"name\": \"4K TV\",\r\n    \"brand\": \"Philips\",\r\n    \"price\": 379,\r\n    \"availableSize\": 43,\r\n    \"refreshRate\": 50,\r\n    \"screenType\": \"LED\",\r\n    \"screenQuality\": \"Ultra HD/4K\",\r\n    \"smartTV\": true,\r\n    \"wifi\": true,\r\n    \"voiceControl\": false,\r\n    \"hdr\": true,\r\n    \"bluetooth\": false,\r\n    \"ambiLight\": false,\r\n    \"originalStock\": 23,\r\n    \"sold\": 2\r\n  }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/televisions/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"televisions",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete1Television",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/televisions/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"televisions",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "addRemotecontrollerToTelevision",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"id\": 3001}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/televisions/1001/remotecontroller",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"televisions",
+								"1001",
+								"remotecontroller"
+							],
+							"query": [
+								{
+									"key": "",
+									"value": null,
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getname (depricated)",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/television?name=\"philips\"",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"television"
+							],
+							"query": [
+								{
+									"key": "name",
+									"value": "\"philips\""
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "TelevisionWallBracket",
+			"item": [
+				{
+					"name": "getallTelevisionWallBracket",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/televisionwallbrackets",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"televisionwallbrackets"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "postTelevisionWallBracket",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"television\": \"1002\",\r\n    \"wallBracket\": \"2002\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/televisionwallbrackets",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"televisionwallbrackets"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get5001TelevisionWallBracket",
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
+				},
+				{
+					"name": "deleteTelevisionWallBracket",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/televisionwallbrackets/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"televisionwallbrackets",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "putTelevisionWallBracket",
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
+				},
+				{
+					"name": "gettelevisionTelevisionWallBracket",
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "WallBrackets",
+			"item": [
+				{
+					"name": "getallWallBrackets",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/wallbrackets",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"wallbrackets"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get2001WallBrackets",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/wallbrackets/2001",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"wallbrackets",
+								"2001"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "put2001WallBrackets",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\": 2001,\r\n    \"size\": 99,\r\n    \"adjustable\": true,\r\n    \"name\": \"super\",\r\n    \"price\": 45\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/wallbrackets/2001",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"wallbrackets",
+								"2001"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "postWallBrackets",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"size\": 150,\r\n    \"adjustable\": true,\r\n    \"name\": \"maniac\",\r\n    \"price\": 35\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/wallbrackets",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"wallbrackets"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "deleteWallBrackets",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/wallbrackets/2001",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"wallbrackets",
+								"2001"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "User",
+			"item": [
+				{
+					"name": "getUsers",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{tokenadmin}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/users",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"users"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getuserbyid",
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
+				},
+				{
+					"name": "addauthority",
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Auth",
+			"item": [
+				{
+					"name": "getJWTToken",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\" : \"user\",\r\n    \"password\" : \"password\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/authenticate",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"authenticate"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"auth": {
+		"type": "bearer",
+		"bearer": [
+			{
+				"key": "token",
+				"value": "{{tokenadmin}}",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	]
+}
